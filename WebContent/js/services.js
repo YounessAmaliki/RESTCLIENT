@@ -18,10 +18,10 @@ angular.module('ProductApp.services', []).
                             return data;
                         });
                 },
-                getProductJSON: function(shortname) {
+                getProductJSON: function(name) {
                 	$http.defaults.headers.common.Accept = 'application/json';
                 	
-                    return  $http.get(restUrl + '/' + shortname).
+                    return  $http.get(restUrl + '/' + name).
                         success(function(data) {
                             return data;
                         }).
