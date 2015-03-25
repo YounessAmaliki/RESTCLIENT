@@ -46,7 +46,7 @@ angular.module('ProductApp.services', []).
                 	    url: restUrl,
                 	    data: productXML,
                 	    headers: {
-                	        'Content-Type': 'text/xml'
+                	        'Content-Type': 'text/json'
                 	    }}).then(function(result) {
                 	    		//alert('success');
                 	       }, function(error) {
