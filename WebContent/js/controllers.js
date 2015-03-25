@@ -8,7 +8,7 @@ angular.module('ProductApp.controllers', []).
         	
 //        	$scope.searchFilter = function(product) {
 //        	    var keyword = new RegExp($scope.nameFilter, 'i');
-//        	    return keyword.test(product.shortname);
+//        	    return keyword.test(product.name);
 //        	};
         	
             ProductService.getProductsJSON().success(function (response) {
@@ -20,9 +20,9 @@ angular.module('ProductApp.controllers', []).
     controller('ProductController', ['$scope', '$routeParams', 'ProductService',
         function($scope, $routeParams, ProductService) {
     		$scope.product = null;
-	        var shortname = $routeParams.shortname;
+	        var name = $routeParams.name;
 
-	        ProductService.getProductJSON(shortname).success(function (response) {
+	        ProductService.getProductJSON(name).success(function (response) {
 	        	$scope.product = response;
 	        });
     	}
@@ -32,13 +32,13 @@ angular.module('ProductApp.controllers', []).
         function($scope, ProductService) {
     		$scope.addProduct = function() {
     			var productXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-            	productXML += '<product><brand>' + $scope.newProduct.brand + '</brand>';
-            	productXML += '<description>' + $scope.newProduct.description + '</description>';
-            	productXML += '<id>' + $scope.newProduct.id + '</id>';
+            	
+            	
+            	productXML += '<product><id>' + $scope.newProduct.id + '</id>';
             	productXML += '<price>' + $scope.newProduct.price + '</price>';
-            	productXML += '<shortname>' + $scope.newProduct.shortname + '</shortname>';
-            	productXML += '<sku>' + $scope.newProduct.sku + '</sku></product>';
-
+            	productXML += '<name>' + $scope.newProduct.name + '</name>';
+            	productXML += '<brand>' + $scope.newProduct.brand + '</brand>';
+            	productXML += '<description>' + $scope.newProduct.description + '</description>';
     			ProductService.addProduct(productXML);
     		};
     	}
